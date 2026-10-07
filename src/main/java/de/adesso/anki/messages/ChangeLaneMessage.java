@@ -7,6 +7,7 @@ import java.nio.ByteBuffer;
  * It is recommended to send SetOffsetFromRoadCenterMessage before sending this message.
  * 
  * @author Yannick Eckey <yannick.eckey@adesso.de>
+ * @author Luis Medina   <lmedina@oswego.edu>
  */
 public class ChangeLaneMessage extends Message {
   public static final int TYPE = 0x25;
@@ -47,6 +48,22 @@ public class ChangeLaneMessage extends Message {
 
   public float getOffsetFromCenter() {
     return offsetFromCenter;
+  }
+
+  public ChangeLaneMessage moveFirstLane(){
+    return new ChangeLaneMessage(-68,this.getHorizontalSpeed() , this.getHorizontalAcceleration());
+  }
+
+    public ChangeLaneMessage moveSecondLane(){
+    return new ChangeLaneMessage(-23, this.getHorizontalSpeed() , this.getHorizontalAcceleration());
+  }
+
+    public ChangeLaneMessage moveThirdLane(){
+    return new ChangeLaneMessage(23,this.getHorizontalSpeed(), this.getHorizontalAcceleration());
+  }
+
+    public ChangeLaneMessage moveFourthLane(){
+    return new ChangeLaneMessage(68, this.getHorizontalSpeed(), this.getHorizontalAcceleration());
   }
 
   @Override

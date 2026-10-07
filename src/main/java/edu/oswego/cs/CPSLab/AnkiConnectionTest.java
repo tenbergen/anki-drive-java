@@ -63,6 +63,7 @@ public class AnkiConnectionTest {
         System.out.println("\nConnecting to " + v + " @ " + v.getAddress());
         v.connect();
         System.out.println("Vehicle Advertisement Data:");
+        System.out.println("Hi it's Luis!");
         System.out.println("   " + v);
         System.out.println("      ID: " + v.getAdvertisement().getIdentifier());
         System.out.println("      Model: " + v.getAdvertisement().getModel());
@@ -85,7 +86,7 @@ public class AnkiConnectionTest {
         //now we can actually send it.
         v.sendMessage(new PingRequestMessage());
         prh.pingSentAt = System.currentTimeMillis();
-        System.out.print(" sent. Waiting at most 10secs for pong...");
+        System.out.print(" sent. Waiting at most 10secs for ping...");
         long timeout  = 10000;
         while (!prh.pingReceived && timeout > 0) {
             Thread.sleep(interval);

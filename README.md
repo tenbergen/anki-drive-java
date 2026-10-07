@@ -69,7 +69,43 @@ sudo apt-get install libudev-dev
 ### On Windows
 
 Node.js server is currently not supported on Windows. However, you can run the Node.js server on a Linux device change
+
 `edu.oswego.cs.CPSLab.AnkiConnectionTest` to connect to the IP of the Raspberry Pi instead of `localhost`.
+
+Updated 9/23/2026
+Set Up
+
+Ensure that your Windows machine is running either JDK 8 or 11, newer versions have deprecated commands that allow for this project to run
+
+Grab IP address from Raspberry Pi 
+```
+hostname -I
+```
+
+You can test the connection.
+Make sure the server is running on the Raspberry Pi and run a TCP test on Windows Powershell.
+```
+Test-NetConnection 'hostname -I' -Port 5000
+```
+You should see
+```
+TcpTestSucceeded: True
+```
+
+Change the IP on the AnkiConnector Object to the IP of the Raspberry Pi.
+```
+anki = new AnkiConnector("hostname -I", 5000);
+```
+
+Build the project on Powershell.
+```
+./gradlew.bat build
+```
+Remove an Anki Car from its charger and power it on.
+Run a AnkiConnectionTest on Powershell.
+```
+./gradlew.bat ankiConnectionTest
+```
 
 ## Usage
 
